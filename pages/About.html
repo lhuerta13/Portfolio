@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - 2022</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body>
+<div class="cursor">
+</div>
+
+<div class="headPage">
+    <div class="headProjets">
+        <div class="nav-toggle-desktop" onclick="document.documentElement.classList.toggle('menu-open-desktop')">
+            <div class="nav-toggle-bar-desktop">
+            </div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+                <li>
+                    <a href="Projects.html">Projects</a>
+                </li>
+                <li>
+                    <a href="About.html">About</a>
+                </li>
+            </ul>
+        </nav>
+
+        <h2>
+            About me
+        </h2>
+    </div>
+</div>
+
+<main class="mainRecouvre">
+    <section class="presentationSection">
+        <div class="presentationColonne1">
+            <div class="imageLucas">
+                <img src="../Static/img/about/imgLucas.jpg" alt="imgLucas">
+            </div>
+        </div>
+        <div class="presentationColonne2">
+            <h2>
+                Hello !
+            </h2>
+            <p>
+                Hello, my name is Lucas Huerta, I am a young student in my second year at the
+                DUT in Multimedia and Internet in Montbéliard.
+            </p>
+            <p>
+                I am passionate about web development, with a slight
+                attraction for design and user experience.
+                The web has always been an interest for me, and later I want to make it my
+                main activity.
+            </p>
+            <p>
+                In this portfolio, you will find my skills and the projects
+                that I was able to realize during my studies or even
+                as a self-taught artist.
+            </p>
+        </div>
+    </section>
+
+    <section class="toolsSection">
+        <h3>What I use</h3>
+        <div>
+            <img src="../Static/img/Icones/html-5.png" alt="logo Html">
+            <img src="../Static/img/Icones/css-3.png" alt="logo css">
+            <img src="../Static/img/Icones/js.png" alt="logo javascript">
+            <img src="../Static/img/Icones/wordpress.png" alt="logo Wordpress">
+            <img src="../Static/img/Icones/github.png" alt="logo Github">
+            <img src="../Static/img/Icones/blender.png" alt="logo Blender">
+        </div>
+        <div>
+            <img src="../Static/img/Icones/threeJs.png" alt="logo Three JS">
+            <img src="../Static/img/Icones/vuejs.png" alt="logo Vue JS">
+            <img src="../Static/img/Icones/adobe.png" alt="logo Illustrator">
+        </div>
+    </section>
+
+    <section class="contact">
+        <h3>Get in touch !</h3>
+
+        <div class="mainContact">
+            <div class="reseaux">
+                <div class="colReseau">
+                    <div class="ligneReseau">
+                        <a href="mailto:huertalucas13@gmail.com">
+                            <img src="../Static/img/Icones/email.png" alt="mail">
+                        </a>
+                        <span>
+                            huertalucas13@gmail.com
+                        </span>
+                    </div>
+                    <div class="ligneReseau">
+                        <a href="https://github.com/lhuerta13" target="_blank">
+                            <img src="../Static/img/Icones/github.png" alt="iconeGithub">
+                        </a>
+                        <span>
+                            lhuerta13
+                        </span>
+                    </div>
+                </div>
+                <div class="colReseau">
+                    <div class="ligneReseau">
+                        <a href="https://www.instagram.com/lucas__hrt/" target="_blank">
+                            <img src="../Static/img/Icones/instagram.png" alt="iconeInstagram">
+                        </a>
+                        <span>
+                            lucas_hrt
+                        </span>
+                    </div>
+                    <div class="ligneReseau">
+                        <a href="https://www.linkedin.com/in/lucas-huerta-430883205/" target="_blank">
+                            <img src="../Static/img/Icones/linkedin.png" alt="iconeLinkedin">
+                        </a>
+                        <span>
+                            Lucas Huerta
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="separation">
+
+            <form action="traitement.php" method="post" id="formContact">
+                <div>
+                    <label for="nom">Name :</label>
+                    <input type="text" id="nom" name="nom">
+                </div>
+                <div>
+                    <label for="mail">Mail :</label>
+                    <input type="email" id="mail" name="mail">
+                </div>
+                <div>
+                    <label for="message">Message :</label>
+                    <input id="message" name="message">
+                </div>
+                <div>
+                    <input id="formButton" type="submit" value="Send">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <span>
+             ©Portfolio
+        </span>
+        <p>
+            Property of Lucas Huerta
+        </p>
+        <span>
+            2022
+        </span>
+    </footer>
+</main>
+
+
+<canvas id="canvasPro">
+
+</canvas>
+
+<script src="../Static/js/cursor.js"></script>
+
+</body>
+</html>
+
+<script type="module" src="../Static/js/threePages.js"></script>
+
+<script>
+
+    if (window.innerWidth > 800) {
+        window.addEventListener('scroll',() => {
+            const value = window.scrollY;
+            let title = document.querySelector('.presentationColonne2 h2');
+            title.style.marginLeft = value * -0.4 + 'px';
+        });
+    }
+
+</script>

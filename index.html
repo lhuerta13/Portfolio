@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - 2022</title>
+    <link rel="stylesheet" href="style/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body>
+
+<div class="cursor">
+</div>
+<!--<div class="loader">-->
+<!--    <div class="carre">-->
+<!--    </div>-->
+<!--</div>-->
+
+<header>
+    <div class="nav-toggle" onclick="document.documentElement.classList.toggle('menu-open')">
+        <div class="nav-toggle-bar">
+        </div>
+    </div>
+
+    <div class="navDisp">
+        <nav class="nav-principale">
+            <ul>
+                <li>
+                    <a href="pages/Projects.html">Projects</a>
+                </li>
+                <li>
+                    <a href="pages/About.html">About</a>
+                </li>
+                <li>
+                    <a href="mailto:huertalucas13@gmail.com">Contact</a>
+                </li>
+<!--                <li>-->
+<!--                    <a href="https://github.com/lhuerta13" target="_blank">-->
+<!--                        <img src="Static/img/Icones/github.png" alt="iconeGithub">-->
+<!--                    </a>-->
+<!--                    <a href="https://www.linkedin.com/in/lucas-huerta-430883205/" target="_blank">-->
+<!--                        <img src="Static/img/Icones/linkedin.png" alt="iconeLinkedin">-->
+<!--                    </a>-->
+<!--                </li>-->
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="page">
+        <div class="left">
+            <p>
+                Portfolio 2022
+            </p>
+            <a href="pages/About.html">
+                About
+            </a>
+        </div>
+        <div class="center">
+            <h1 id="titreLucas">
+                Lucas Huerta
+            </h1>
+            <p class="dev">
+                Creative Web Developer
+            </p>
+        </div>
+        <div class="right">
+            <a href="pages/Projects.html">
+                My projects
+            </a>
+            <a href="mailto:huertalucas13@gmail.com" class="link">
+                Contact
+            </a>
+        </div>
+    </div>
+</main>
+
+<canvas id="canvas"></canvas>
+
+<script src="Static/js/cursor.js"></script>
+
+
+</body>
+</html>
+
+<script type="module">
+    import * as THREE from './three/build/three.module.js';
+    // import {OrbitControls} from './three/examples/jsm/controls/OrbitControls.js';
+
+    // variables Globale utilisées par les deux fonctions
+    let renderer,
+        camera,
+        scene,
+        cube;
+        // controls;
+
+    let SCREEN_WIDTH,SCREEN_HEIGHT,SCREEN_LEFT,SCREEN_TOP;
+
+    let loader = document.querySelector('.loader');
+    let container = document.getElementById("canvas");
+
+    function onWindowResize(){
+        let w = container.offsetWidth;
+        let h = container.offsetHeight;
+        SCREEN_WIDTH = container.scrollWidth;
+        SCREEN_HEIGHT = container.scrollHeight;
+        SCREEN_LEFT = container.offsetLeft - container.scrollLeft + container.clientLeft;
+        SCREEN_TOP = container.offsetTop - container.scrollTop + container.clientTop;
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+    }
+
+    function start() {
+        // renderer = new THREE.WebGLRenderer();
+        renderer = new THREE.WebGLRenderer({
+            canvas: container,
+            alpha: true
+        });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        window.addEventListener('resize', onWindowResize, false);
+        // renderer.setClearColor(0xFFFFFF,0);
+        document.body.appendChild(renderer.domElement);
+
+        let w = container.offsetWidth;
+        let h = container.offsetHeight;
+        SCREEN_WIDTH = container.scrollWidth;
+        SCREEN_HEIGHT = container.scrollHeight;
+        SCREEN_LEFT = container.offsetLeft - container.scrollLeft + container.clientLeft;
+        SCREEN_TOP = container.offsetTop - container.scrollTop + container.clientTop;
+        renderer.setSize(w, h);
+
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight,1,6000);
+        // controls = new OrbitControls(camera,renderer.domElement);
+        camera.position.set(0,0,600);
+
+        scene = new THREE.Scene();
+        scene.add(camera);
+
+        const material = new THREE.MeshPhongMaterial({
+            color: '#ABD2FA', emissive: '#FFFFFF' ,specular: '#ff00ff',shininess: 1000, wireframe: true
+        });
+
+        let p = window.innerWidth;
+
+        if (window.innerWidth < 600){
+            p = p / 4;
+            const geometry =  new THREE.OctahedronGeometry(p, 0);
+
+            cube = new THREE.Mesh(geometry, material);
+
+            cube.position.set(0,0,0);
+
+            console.log(cube);
+            scene.add(cube);
+        }else if(window.innerWidth > 1600){
+            p = p / 10;
+            const geometry =  new THREE.IcosahedronGeometry(p, 1);
+
+            cube = new THREE.Mesh(geometry, material);
+
+            cube.position.set(0,0,0);
+
+            console.log(cube);
+            scene.add(cube);
+        }else{
+            const geometry =  new THREE.IcosahedronGeometry(window.innerWidth / 7, 1);
+            geometry.colors = '#ABD2FA';
+
+            cube = new THREE.Mesh(geometry, material);
+
+            cube.position.set(0,10,0);
+
+            console.log(cube);
+            scene.add(cube);
+
+        }
+
+        let ambientLight = new THREE.AmbientLight(0x0f0f0f);
+        ambientLight.position.set(-40,100,0)
+        scene.add(ambientLight);
+        let pointLight = new THREE.PointLight(0xffffff,0);
+        pointLight.position.set(-30, 100, 0);
+        scene.add(pointLight);
+    }
+
+    function animate() {
+        renderer.render(scene, camera);
+
+        // Animation souris
+
+        if (window.innerWidth > 700) {
+            document.onmousemove = function (event) {
+                let x = event.clientX * 70 / window.innerWidth;
+                let y = event.clientY * 40 / window.innerHeight;
+                // let x = event.clientX * 100 / window.innerWidth + "%";
+                // let y = event.clientY * 100 / window.innerHeight + "%";
+
+                if (100 < y < 50) {
+                    cube.position.set(x, -y, 0);
+                } else {
+                    cube.position.set(-x, y, 0);
+                }
+
+                console.log("x =", x);
+                console.log("y =", y);
+            }
+        }
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        cube.rotation.z += 0.001;
+        requestAnimationFrame(animate);
+    }
+
+    start();
+    animate();
+
+</script>

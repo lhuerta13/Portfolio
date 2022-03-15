@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - 2022</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+    <script src="https://unpkg.com/tilt.js@1.2.1/dest/tilt.jquery.min.js"></script>
+</head>
+<body>
+
+<div class="cursor">
+</div>
+    <div class="headPage">
+        <div class="headProjets">
+            <div class="nav-toggle-desktop" onclick="document.documentElement.classList.toggle('menu-open-desktop')">
+                <div class="nav-toggle-bar-desktop">
+                </div>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <a href="../index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="Projects.html">Projects</a>
+                    </li>
+                    <li>
+                        <a href="About.html">About</a>
+                    </li>
+                </ul>
+            </nav>
+            <h2>
+                My projects
+            </h2>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="oneProject">
+            <span data-tilt>
+                <img src="../Static/img/projets/defi24heures/defi24Heures.PNG" alt="imageProjet">
+            </span>
+            <div class="descriptionProjet">
+                <h2>
+                    Défi 24 heures
+                </h2>
+                <a class="lienProjet" href="Projets/Defi24Heures.html">Go to the project</a>
+            </div>
+        </div>
+        <div class="oneProject">
+            <span data-tilt><img src="../Static/img/imgProjet/Boss/home.PNG" alt="imageProjet"></span>
+            <div class="descriptionProjet">
+                <h2>
+                    Boss S3
+                </h2>
+                <a class="lienProjet" href="Projets/Boss.html">Go to the project</a>
+            </div>
+        </div>
+        <div class="oneProject">
+            <span data-tilt><img src="../Static/img/imgProjet/MiniBoss/Home.PNG" alt="imageProjet"></span>
+            <div class="descriptionProjet">
+                <h2>
+                    <a href="Projets/MiniBoss.html">Mini-Boss</a>
+                </h2>
+                <a class="lienProjet" href="Projets/MiniBoss.html">Go to the project</a>
+            </div>
+        </div>
+        <div class="oneProject">
+            <span data-tilt><img src="../Static/img/imgProjet/Monogramme/Monogramme3D.gif" alt="imageProjet"></span>
+            <div class="descriptionProjet">
+                <h2>
+                    Monogramme 3D
+                </h2>
+                <a class="lienProjet" href="Projets/Monogramme.html">Go to the project</a>
+            </div>
+        </div>
+    </div>
+<footer>
+    <span>
+         ©Portfolio
+    </span>
+    <p>
+        Property of Lucas Huerta
+    </p>
+    <span>
+        2022
+    </span>
+</footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Static/js/tilt.js"></script> <!-- Load Tilt.js library -->
+
+<canvas id="canvasPro">
+
+</canvas>
+
+<script src="../Static/js/cursor.js"></script>
+
+</body>
+</html>
+
+<script type="module" src="../Static/js/threePages.js"></script>
+
+<!--<script>-->
+<!--    window.addEventListener('scroll',() => {-->
+<!--        const scrolled = window.scrollY;-->
+<!--        const value = window.scrollY;-->
+<!--        let title = document.querySelector('.presentationColonne2 h2');-->
+
+<!--        title.style.marginLeft = value - test;-->
+<!--    });-->
+<!--</script>-->
